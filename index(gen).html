@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Love Meter</title>
+  <style>
+    .container {
+      text-align: center;
+      margin: 50px auto;
+      max-width: 500px;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    .love-meter {
+      width: 100%;
+      height: 20px;
+      background-color: #eee;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .love-meter-line {
+      width: 0%;
+      height: 100%;
+      background-color: rgb(0, 255, 0);
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .love-meter-percentage {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 20px;
+      color: rgb(0, 0, 0);
+    }
+
+    h1 {
+      font-family: 'Felix Titling', cursive;
+      font-size: 5rem;
+      color: red;
+      margin-bottom: 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #000000;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      color: rgb(231, 231, 231);
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: red;
+      transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        transition: all 0.s ease-in-out;
+        cursor: pointer;
+    }
+    body {
+            background-image: url("https://idsb.tmgrup.com.tr/ly/uploads/images/2021/02/12/92946.jpg");
+            width=50px
+            height=50px
+         }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Love Meter</h1>
+    <div class="form-group">
+      <label for="name1"><b>Name 1:</b></label>
+      <input type="text" id="name1" placeholder="Enter name">
+    </div>
+    <div class="form-group">
+      <label for="name2"><b>Name 2:</b></label>
+      <input type="text" id="name2" placeholder="Enter name">
+    </div>
+    <button onclick="generateLoveMeter()">Generate Love Meter</button>
+    <div class="love-meter">
+      <div class="love-meter-line"></div>
+      <div class="love-meter-percentage">0%</div>
+    </div>
+  </div>
+<br  />
+  <script>
+    function generateLoveMeter() {
+      const name1 = document.getElementById('name1').value.toLowerCase();
+      const name2 = document.getElementById('name2').value.toLowerCase();
+
+      let percentage = 0;
+      if ((name1 === 'daryan' && name2 === 'saya') || (name1 === 'saya' && name2 === 'daryan')) {
+        percentage = 100;
+      } else {
+        percentage = Math.floor(Math.random() * 100) + 1;
+      }
+
+      const line = document.querySelector('.love-meter-line');
+      const percentageText = document.querySelector('.love-meter-percentage');
+      percentageText.innerHTML = '0%';
+      line.style.width = '0%';
+    
+      let width = 0;
+      let interval = setInterval(() => {
+        if (width >= percentage) {
+          clearInterval(interval);
+        } else {
+          width++;
+          line.style.width = `${width}%`;
+          percentageText.innerHTML = `${width}%`;
+          lovePercentage.innerHTML = `The love between ${name1} and ${name2} is ${number}%`;
+        }
+      }, 20);
+    }
+  </script>
+
+</body>
+
+</html>
